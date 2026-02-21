@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Footer from '../components/Footer'
+import { trackEvent } from '../lib/analytics'
 
 export default function Franchise() {
   const fieldClass =
@@ -62,7 +63,16 @@ export default function Franchise() {
               </div>
             </div>
 
-            <a href="#franchise-interest" className="btn-primary inline-block">
+            <a
+              href="#franchise-interest"
+              className="btn-primary inline-block"
+              onClick={() =>
+                trackEvent('select_content', {
+                  content_type: 'cta',
+                  item_id: 'franchise_start_interest_form',
+                })
+              }
+            >
               Start Franchise Interest Form
             </a>
           </motion.div>
@@ -193,7 +203,18 @@ export default function Franchise() {
               qualifications. Qualified candidates are invited to a follow-up call and formal review.
             </p>
 
-            <form action="mailto:info@apexgi.com" method="post" encType="text/plain" className="space-y-8">
+            <form
+              action="mailto:info@apexgi.com"
+              method="post"
+              encType="text/plain"
+              className="space-y-8"
+              onSubmit={() =>
+                trackEvent('generate_lead', {
+                  form_name: 'franchise_interest',
+                  location: 'franchise_page',
+                })
+              }
+            >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                   <label htmlFor="fullName" className="block text-[14px] text-white/75 mb-2">

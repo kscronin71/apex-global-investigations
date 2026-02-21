@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { trackEvent } from '../lib/analytics'
 
 const navItems = [
   { name: 'Home', href: '/' },
@@ -28,8 +29,8 @@ export default function Navigation() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0B0B0D]/85 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-20">
-            <Link href="/" className="text-[15px] font-semibold tracking-tight">
-              APEX GLOBAL
+            <Link href="/" className="text-[13px] lg:text-[15px] font-semibold tracking-tight">
+              APEX GLOBAL INVESTIGATIONS
             </Link>
 
             <div className="hidden md:flex items-center gap-10">
@@ -47,6 +48,12 @@ export default function Navigation() {
             <Link
               href="/#contact"
               className="hidden md:block text-[14px] font-medium text-white border border-white/45 px-5 py-2.5 hover:bg-white hover:text-black transition-all duration-300"
+              onClick={() =>
+                trackEvent('contact', {
+                  method: 'consultation_cta',
+                  location: 'navigation_desktop',
+                })
+              }
             >
               Contact
             </Link>
@@ -107,7 +114,13 @@ export default function Navigation() {
                 <a
                   href="tel:8333432164"
                   className="btn-primary"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => {
+                    trackEvent('contact', {
+                      method: 'phone',
+                      location: 'navigation_mobile',
+                    })
+                    setMobileMenuOpen(false)
+                  }}
                 >
                   (833) 343-2164
                 </a>

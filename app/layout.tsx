@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import './globals.css'
 import Navigation from './components/Navigation'
+import GoogleAnalytics from './components/GoogleAnalytics'
 
 // SEO-optimized metadata
 // Title Tag: Targets high-value keywords while staying under 60 characters
@@ -207,6 +209,9 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: cssRecoveryScript }} />
       </head>
       <body className="grain-overlay">
+        <Suspense fallback={null}>
+          <GoogleAnalytics />
+        </Suspense>
         <Navigation />
         {children}
       </body>

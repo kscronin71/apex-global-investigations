@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Footer from '../../components/Footer'
+import { trackEvent } from '../../lib/analytics'
 
 type ServiceContent = {
   num: string
@@ -161,10 +162,28 @@ export default function ServiceDetailClient({ service }: { service: ServiceConte
                 with your most sensitive matters.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="tel:8333432164" className="btn-primary">
+                <a
+                  href="tel:8333432164"
+                  className="btn-primary"
+                  onClick={() =>
+                    trackEvent('contact', {
+                      method: 'phone',
+                      location: `service_detail_${service.title.toLowerCase().replace(/\s+/g, '-')}`,
+                    })
+                  }
+                >
                   (833) 343-2164
                 </a>
-                <Link href="/services" className="btn-secondary">
+                <Link
+                  href="/services"
+                  className="btn-secondary"
+                  onClick={() =>
+                    trackEvent('select_content', {
+                      content_type: 'navigation',
+                      item_id: 'service_detail_view_all_services',
+                    })
+                  }
+                >
                   View All Services
                 </Link>
               </div>

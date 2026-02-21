@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Footer from '../components/Footer'
+import { trackEvent } from '../lib/analytics'
 
 const services = [
   {
@@ -75,6 +76,12 @@ export default function Services() {
                 <Link
                   href={`/services/${service.slug}`}
                   className="service-card block h-full group cursor-pointer"
+                  onClick={() =>
+                    trackEvent('select_content', {
+                      content_type: 'service',
+                      item_id: service.slug,
+                    })
+                  }
                 >
                   <div className="flex items-center justify-between mb-6">
                     <span className="service-number">{service.num}</span>
@@ -121,7 +128,16 @@ export default function Services() {
               Coverage areas, alert radius, and recipient workflows are configured by our team as part of
               onboarding.
             </p>
-            <a href="mailto:info@apexgi.com" className="btn-primary inline-block">
+            <a
+              href="mailto:info@apexgi.com"
+              className="btn-primary inline-block"
+              onClick={() =>
+                trackEvent('contact', {
+                  method: 'email',
+                  location: 'services_intelligence_alerts',
+                })
+              }
+            >
               Request Access
             </a>
           </motion.div>
@@ -149,7 +165,16 @@ export default function Services() {
                 is prepared to assist with your most sensitive matters.
               </p>
               <div className="flex justify-center">
-                <a href="tel:8333432164" className="btn-primary">
+                <a
+                  href="tel:8333432164"
+                  className="btn-primary"
+                  onClick={() =>
+                    trackEvent('contact', {
+                      method: 'phone',
+                      location: 'services_consultation_cta',
+                    })
+                  }
+                >
                   (833) 343-2164
                 </a>
               </div>

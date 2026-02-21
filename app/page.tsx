@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import Footer from './components/Footer'
+import { trackEvent } from './lib/analytics'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -44,7 +45,7 @@ export default function Home() {
               variants={fadeInUp}
               className="text-[clamp(42px,7vw,84px)] font-semibold leading-[1.02] tracking-[-0.03em] mb-8"
             >
-              Corporate Investigations, Fraud Detection, and Litigation Support.
+              Corporate Investigations, Fraud Detection, and Litigation Support
             </motion.h1>
 
             {/* Subhead */}
@@ -61,10 +62,28 @@ export default function Home() {
               variants={fadeInUp}
               className="flex flex-wrap gap-4 mb-24"
             >
-              <Link href="#contact" className="btn-primary">
+              <Link
+                href="#contact"
+                className="btn-primary"
+                onClick={() =>
+                  trackEvent('contact', {
+                    method: 'consultation_cta',
+                    location: 'home_hero',
+                  })
+                }
+              >
                 Request Consultation
               </Link>
-              <Link href="/services" className="btn-secondary">
+              <Link
+                href="/services"
+                className="btn-secondary"
+                onClick={() =>
+                  trackEvent('select_content', {
+                    content_type: 'cta',
+                    item_id: 'home_view_services',
+                  })
+                }
+              >
                 View Services
               </Link>
             </motion.div>
@@ -357,7 +376,16 @@ export default function Home() {
                 is prepared to assist with your most sensitive matters.
               </p>
               <div className="flex justify-center">
-                <a href="tel:8333432164" className="btn-primary">
+                <a
+                  href="tel:8333432164"
+                  className="btn-primary"
+                  onClick={() =>
+                    trackEvent('contact', {
+                      method: 'phone',
+                      location: 'home_contact_section',
+                    })
+                  }
+                >
                   (833) 343-2164
                 </a>
               </div>
