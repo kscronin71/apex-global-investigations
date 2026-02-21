@@ -6,7 +6,7 @@ import Navigation from './components/Navigation'
 // Title Tag: Targets high-value keywords while staying under 60 characters
 // Meta Description: Under 150 characters, includes CTA and key differentiator
 export const metadata: Metadata = {
-  metadataBase: new URL('https://apexglobalinvestigations.com'),
+  metadataBase: new URL('https://apexgi.com'),
   title: 'Corporate Investigations & Intelligence | Apex Global Investigations',
   description: 'Elite Corporate Investigations, Fraud Detection, and Litigation Support. Former federal agents. Confidential consultation available.',
   keywords: [
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://apexglobalinvestigations.com',
+    url: 'https://apexgi.com',
     siteName: 'Apex Global Investigations',
     title: 'Corporate Investigations & Intelligence | Apex Global Investigations',
     description: 'Elite Corporate Investigations, Fraud Detection, and Litigation Support. Former federal agents.',
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     images: ['/og-image.jpg'],
   },
   alternates: {
-    canonical: 'https://apexglobalinvestigations.com',
+    canonical: 'https://apexgi.com',
   },
 }
 
@@ -68,7 +68,7 @@ const jsonLd = {
   '@type': 'ProfessionalService',
   name: 'Apex Global Investigations',
   description: 'Elite corporate investigations, fraud detection, litigation support, and business intelligence services.',
-  url: 'https://apexglobalinvestigations.com',
+  url: 'https://apexgi.com',
   telephone: '(833) 343-2164',
   address: {
     '@type': 'PostalAddress',
@@ -98,7 +98,7 @@ const jsonLd = {
     'Executive Protection',
   ],
   priceRange: '$$$',
-  image: 'https://apexglobalinvestigations.com/og-image.jpg',
+  image: 'https://apexgi.com/og-image.jpg',
   sameAs: [
     'https://www.linkedin.com/company/apex-global-investigations',
   ],

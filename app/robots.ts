@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
-  const siteUrl = 'https://apexglobalinvestigations.com'
+  const siteUrl = 'https://apexgi.com'
 
   return {
     rules: {

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-const siteUrl = 'https://apexglobalinvestigations.com'
+const siteUrl = 'https://apexgi.com'
 
 const staticRoutes = [
   '',
